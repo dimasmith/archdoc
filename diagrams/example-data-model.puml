@@ -1,0 +1,48 @@
+@startuml
+title
+Example data model
+end title
+header Version 0.1.0
+
+skinparam linetype ortho
+left to right direction
+
+    package Sales {
+
+        entity Order {
+        * id : Integer
+        --
+        * orderDate : Date
+        * orderNumber : String    
+    }
+
+    entity OrderItem {
+        * id : Integer
+        --
+        * quantity : Integer
+        * unitPrice : Decimal
+        * productId : Integer
+        * orderId : Integer
+    }
+
+}
+
+package Catalog {
+    entity Product {
+        * id : Integer
+        --
+        * name : String
+        * description : String
+        * price : Decimal
+        * imageUrl : String
+    }
+}
+
+entity Customer <<Reference>> {
+    * id : Integer
+}
+
+Order ||.o{ OrderItem
+OrderItem }o..|| Product
+Customer ||...|| Order
+@enduml
