@@ -1,1 +1,5 @@
+# internal works of structurizr tool
 .structurizr/
+
+# exported diagrams
+export/
